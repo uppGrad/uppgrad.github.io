@@ -6,8 +6,7 @@ function App() {
       {/* Header Section */}
       <header className="header">
         <div className="container">
-          <h1 className="project-title">UpGrad</h1>
-          <p className="project-subtitle">Senior Capstone Project</p>
+          <h1 className="project-title">UppGrad</h1>
           <p className="project-description">
             A comprehensive platform designed to enhance educational experiences through innovative technology solutions.
           </p>
@@ -30,35 +29,7 @@ function App() {
       <main className="main">
         <div className="container">
           {/* Team Section */}
-          <section id="team" className="section">
-            <h2>Team Members</h2>
-            <div className="team-grid">
-              <div className="team-member">
-                <div className="member-avatar">👨‍💻</div>
-                <h3>John Doe</h3>
-                <p>Project Lead & Full-Stack Developer</p>
-                <p>john.doe@university.edu</p>
-              </div>
-              <div className="team-member">
-                <div className="member-avatar">👩‍💻</div>
-                <h3>Jane Smith</h3>
-                <p>Frontend Developer & UI/UX Designer</p>
-                <p>jane.smith@university.edu</p>
-              </div>
-              <div className="team-member">
-                <div className="member-avatar">👨‍🔬</div>
-                <h3>Mike Johnson</h3>
-                <p>Backend Developer & Database Specialist</p>
-                <p>mike.johnson@university.edu</p>
-              </div>
-              <div className="team-member">
-                <div className="member-avatar">👩‍🔬</div>
-                <h3>Sarah Wilson</h3>
-                <p>DevOps Engineer & System Administrator</p>
-                <p>sarah.wilson@university.edu</p>
-              </div>
-            </div>
-          </section>
+          
 
           {/* Project Overview */}
           <section id="project" className="section">
@@ -137,14 +108,44 @@ function App() {
             </div>
           </section>
 
+          <section id="team" className="section">
+            <h2>Team Members</h2>
+            <div className="team-grid">
+              <div className="team-member">
+                <div className="member-avatar">👨‍💻</div>
+                <h3>Ali Özhavala</h3>
+                <p>ali.ozhavala@ug.bilkent.edu.tr</p>
+              </div>
+              <div className="team-member">
+                <div className="member-avatar">👩‍💻</div>
+                <h3>Begüm Filiz Öz</h3>
+                <p>filiz.oz@ug.bilkent.edu.tr</p>
+              </div>
+              <div className="team-member">
+                <div className="member-avatar">👨‍💻</div>
+                <h3>Bertan Turgut</h3>
+                <p>bertan.turgut@ug.bilkent.edu.tr</p>
+              </div>
+              <div className="team-member">
+                <div className="member-avatar">👨‍💻</div>
+                <h3>Emre Uçar</h3>
+                <p>emre.ucar@ug.bilkent.edu.tr</p>
+              </div>
+              <div className="team-member">
+                <div className="member-avatar">👨‍💻</div>
+                <h3>Koray Sevil</h3>
+                <p>koray.sevil@ug.bilkent.edu.tr</p>
+              </div>
+            </div>
+          </section>
+
         </div>
       </main>
 
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 UpGrad Senior Capstone Project. All rights reserved.</p>
-          <p>Built with React, TypeScript, and Vite</p>
+          <p>&copy; 2025 UpGrad Senior Project. All rights reserved.</p>
         </div>
       </footer>
       </div>

@@ -1,10 +1,10 @@
 {
-  "name": "upgrad-website",
+  "name": "uppgrad",
   "private": true,
   "version": "1.0.0",
   "description": "UpGrad Senior Capstone Project Website",
   "type": "module",
-  "homepage": "https://your-username.github.io/upgrad-website",
+  "homepage": "https://uppgrad.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
