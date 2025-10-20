@@ -54,7 +54,7 @@ function App() {
           {/* Reports Section */}
           <section id="reports" className="section">
             <h2>Project Reports & Documentation</h2>
-            <p>No report or doucmentation yet</p>
+            <p>No report or documentation yet</p>
             {/* <div className="reports-grid">
               <div className="report-card">
                 <h3>📋 Project Proposal</h3>
