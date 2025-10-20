@@ -7,9 +7,6 @@ function App() {
       <header className="header">
         <div className="container">
           <h1 className="project-title">UppGrad</h1>
-          <p className="project-description">
-            A comprehensive platform designed to enhance educational experiences through innovative technology solutions.
-          </p>
         </div>
       </header>
 
@@ -32,7 +29,7 @@ function App() {
           
 
           {/* Project Overview */}
-          <section id="project" className="section">
+          {/* <section id="project" className="section">
             <h2>Project Overview</h2>
             <div className="project-content">
               <div className="project-info">
@@ -51,21 +48,8 @@ function App() {
                   <li>Mobile-responsive design</li>
                 </ul>
               </div>
-              <div className="tech-stack">
-                <h3>Technology Stack</h3>
-                <div className="tech-grid">
-                  <span className="tech-item">React</span>
-                  <span className="tech-item">TypeScript</span>
-                  <span className="tech-item">Node.js</span>
-                  <span className="tech-item">MongoDB</span>
-                  <span className="tech-item">Express</span>
-                  <span className="tech-item">Docker</span>
-                  <span className="tech-item">AWS</span>
-                  <span className="tech-item">Git</span>
-                </div>
-              </div>
             </div>
-          </section>
+          </section> */}
 
           {/* Reports Section */}
           <section id="reports" className="section">
