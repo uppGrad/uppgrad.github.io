@@ -14,10 +14,10 @@ function App() {
       <nav className="nav">
         <div className="container">
           <ul className="nav-list">
-            <li><a href="#team">Team</a></li>
-            <li><a href="#project">Project</a></li>
+            {/* <li><a href="#project">Project</a></li> */}
             <li><a href="#reports">Reports</a></li>
             <li><a href="#repositories">Repositories</a></li>
+            <li><a href="#team">Team</a></li>
           </ul>
         </div>
       </nav>
@@ -54,7 +54,8 @@ function App() {
           {/* Reports Section */}
           <section id="reports" className="section">
             <h2>Project Reports & Documentation</h2>
-            <div className="reports-grid">
+            <p>No report or doucmentation yet</p>
+            {/* <div className="reports-grid">
               <div className="report-card">
                 <h3>📋 Project Proposal</h3>
                 <p>Initial project proposal and scope definition</p>
@@ -75,7 +76,7 @@ function App() {
                 <p>Detailed technical specifications and API docs</p>
                 <a href="#" className="btn">View Documentation</a>
               </div>
-            </div>
+            </div> */}
           </section>
 
           {/* Repositories Section */}
