@@ -1,6 +1,6 @@
-# UpGrad
+# UppGrad
 
-A website for the UpGrad senior project
+A website for the UppGrad senior project
 
 dev:
 npm install && npm run dev
