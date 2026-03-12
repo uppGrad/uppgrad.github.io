@@ -54,29 +54,23 @@ function App() {
           {/* Reports Section */}
           <section id="reports" className="section">
             <h2>Project Reports & Documentation</h2>
-            <p>No report or documentation yet</p>
-            {/* <div className="reports-grid">
+            <div className="reports-grid">
               <div className="report-card">
-                <h3>📋 Project Proposal</h3>
-                <p>Initial project proposal and scope definition</p>
-                <a href="#" className="btn">View Report</a>
+                <h3>📋 Project Specification Document</h3>
+                <p>Initial project scope and requirements definition.</p>
+                <a href="/reports/T2528_Project_Specification_Document.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Report</a>
               </div>
               <div className="report-card">
-                <h3>📊 Progress Report</h3>
-                <p>Mid-term progress and milestone achievements</p>
-                <a href="#" className="btn">View Report</a>
+                <h3>📊 Analysis and Requirements Report</h3>
+                <p>Comprehensive system requirements and analysis.</p>
+                <a href="/reports/T2528_Analysis_and_Requirements_Report.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Report</a>
               </div>
               <div className="report-card">
-                <h3>📈 Final Report</h3>
-                <p>Comprehensive project summary and results</p>
-                <a href="#" className="btn">View Report</a>
+                <h3>📈 Detailed Design Report</h3>
+                <p>Technical architecture and implementation design details.</p>
+                <a href="/reports/T2528_Detailed_Design_Report.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Report</a>
               </div>
-              <div className="report-card">
-                <h3>📚 Technical Documentation</h3>
-                <p>Detailed technical specifications and API docs</p>
-                <a href="#" className="btn">View Documentation</a>
-              </div>
-            </div> */}
+            </div>
           </section>
 
           {/* Repositories Section */}
