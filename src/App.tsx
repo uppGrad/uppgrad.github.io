@@ -26,7 +26,7 @@ function App() {
       <main className="main">
         <div className="container">
           {/* Team Section */}
-          
+
 
           {/* Project Overview */}
           {/* <section id="project" className="section">
@@ -80,7 +80,7 @@ function App() {
               <div className="repo-card">
                 <h3>🔗 Main Repository</h3>
                 <p>Primary project repository containing all source code</p>
-                <a href="https://github.com/your-username/upgrad" target="_blank" rel="noopener noreferrer" className="btn">
+                <a href="https://github.com/uppGrad" target="_blank" rel="noopener noreferrer" className="btn">
                   View Repository
                 </a>
               </div>
@@ -127,7 +127,7 @@ function App() {
           <p>&copy; 2025 UpGrad Senior Project. All rights reserved.</p>
         </div>
       </footer>
-      </div>
+    </div>
   )
 }
 
