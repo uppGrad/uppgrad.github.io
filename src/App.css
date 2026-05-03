@@ -210,6 +210,30 @@
   font-size: 0.9rem;
 }
 
+/* Visit Section */
+.visit-panel {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.visit-panel h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.visit-panel p {
+  color: #666;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
 /* Reports Section */
 .reports-grid {
   display: grid;
@@ -239,6 +263,40 @@
 }
 
 .report-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Logbooks Section */
+.logbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.logbook-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.logbook-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.logbook-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.logbook-card p {
   color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.6;
@@ -298,6 +356,14 @@
   box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
+.btn-secondary {
+  background: #333;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.25);
+}
+
 /* Footer */
 .footer {
   background: #333;
@@ -347,8 +413,15 @@
     gap: 2rem;
   }
   
+  .visit-panel {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+
   .team-grid,
   .reports-grid,
+  .logbook-grid,
   .repo-grid {
     grid-template-columns: 1fr;
   }
@@ -365,6 +438,8 @@
   
   .team-member,
   .report-card,
+  .logbook-card,
+  .visit-panel,
   .repo-card {
     padding: 1.5rem;
   }

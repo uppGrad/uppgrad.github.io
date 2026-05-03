@@ -15,7 +15,9 @@ function App() {
         <div className="container">
           <ul className="nav-list">
             {/* <li><a href="#project">Project</a></li> */}
+            <li><a href="https://uppgrad.up.railway.app/" target="_blank" rel="noopener noreferrer">Visit UppGrad</a></li>
             <li><a href="#reports">Reports</a></li>
+            <li><a href="#logbooks">Logbooks</a></li>
             <li><a href="#repositories">Repositories</a></li>
             <li><a href="#team">Team</a></li>
           </ul>
@@ -51,6 +53,22 @@ function App() {
             </div>
           </section> */}
 
+          {/* Visit UppGrad Section */}
+          <section id="visit" className="section">
+            <h2>Visit UppGrad</h2>
+            <div className="visit-panel">
+              <div>
+                <h3>Explore the live platform</h3>
+                <p>
+                  Open the deployed UppGrad application to try the student, employer, and admin workflows built for the senior project.
+                </p>
+              </div>
+              <a href="https://uppgrad.up.railway.app" target="_blank" rel="noopener noreferrer" className="btn">
+                Launch UppGrad
+              </a>
+            </div>
+          </section>
+
           {/* Reports Section */}
           <section id="reports" className="section">
             <h2>Project Reports & Documentation</h2>
@@ -72,6 +90,27 @@ function App() {
               </div>
             </div>
           </section>
+
+          <section id="logbooks" className="section">
+            <h2>Project Logbooks</h2>
+            <div className="reports-grid">
+              <div className="report-card">
+                <h3>📘 Begüm Filiz Öz's Logbook</h3>
+                <p>PDF file for Begüm's logbook.</p>
+                <a href="/logbooks/begum_logbook.pdf" target="_blank" rel="noopener noreferrer" className="btn">
+                  View Logbook
+                </a>
+              </div>
+              <div className="report-card">
+                <h3>📘 Bertan Turgut's Logbook</h3>
+                <p>PDF file for Bertan's logbook.</p>
+                <a href="/logbooks/bertan_logbook.pdf" target="_blank" rel="noopener noreferrer" className="btn">
+                  View Logbook
+                </a>
+              </div>
+            </div>
+          </section>
+
 
           {/* Repositories Section */}
           <section id="repositories" className="section">
