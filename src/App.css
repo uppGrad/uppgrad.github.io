@@ -364,6 +364,289 @@
   box-shadow: 0 10px 20px rgba(51, 51, 51, 0.25);
 }
 
+/* ── User Manual ─────────────────────────────────────────────────────────────
+   Replaces the previous manual block entirely.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.manual-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  overflow: hidden;
+  border: 1px solid #eaecf0;
+}
+
+.manual-card-header {
+  padding: 1.75rem 2rem 0;
+  border-bottom: 1px solid #f0f2f5;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0;
+}
+
+.manual-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.manual-body {
+  padding: 1.75rem 2rem;
+}
+
+.manual-sub {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin: 1.75rem 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #f0f2f5;
+}
+
+.manual-sub:first-child {
+  margin-top: 0;
+}
+
+.manual-p {
+  font-size: 0.95rem;
+  color: #4a4a68;
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+
+/* Numbered step list */
+.manual-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  counter-reset: step-counter;
+}
+
+.manual-steps li {
+  counter-increment: step-counter;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  background: #f8f9ff;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  color: #4a4a68;
+  line-height: 1.55;
+  border-left: 3px solid #667eea;
+}
+
+.manual-steps li::before {
+  content: counter(step-counter);
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Role Tabs */
+.role-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.role-tab {
+  padding: 0.45rem 1.25rem;
+  border-radius: 6px;
+  border: 1.5px solid #d0d5dd;
+  background: white;
+  color: #555;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
+}
+
+.role-tab:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.role-tab--active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 2px 10px rgba(102,126,234,0.3);
+}
+
+.role-content {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Screenshot Placeholder */
+.screenshot-figure {
+  margin: 1.5rem 0;
+}
+
+.screenshot-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f3f4f8;
+  border: 2px dashed #c5cae9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.screenshot-box--tall {
+  aspect-ratio: 4 / 3;
+}
+
+.screenshot-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.5rem;
+  text-align: center;
+  user-select: none;
+}
+
+.screenshot-camera {
+  width: 36px;
+  height: 36px;
+  color: #9fa8da;
+  margin-bottom: 0.25rem;
+  flex-shrink: 0;
+}
+
+.screenshot-id {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9fa8da;
+  text-transform: uppercase;
+  background: #e8eaf6;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.screenshot-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5c6bc0;
+}
+
+.screenshot-hint {
+  font-size: 0.75rem;
+  color: #b0bec5;
+  font-style: italic;
+}
+
+.screenshot-caption {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: #777;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.faq-item {
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-item--open {
+  border-color: #c5cae9;
+  box-shadow: 0 2px 12px rgba(102,126,234,0.08);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #333;
+  transition: background 0.15s;
+}
+
+.faq-question:hover {
+  background: #f8f9ff;
+}
+
+.faq-item--open .faq-question {
+  background: #f0f2ff;
+  color: #5563d9;
+}
+
+.faq-chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #9e9e9e;
+}
+
+.faq-answer {
+  padding: 0.75rem 1.25rem 1rem;
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.65;
+  background: #f8f9ff;
+  border-top: 1px solid #eef0ff;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .manual-body,
+  .manual-card-header {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .screenshot-box {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+
 /* Footer */
 .footer {
   background: #333;
