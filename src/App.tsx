@@ -4,22 +4,23 @@ import './App.css'
 // ─── Screenshot Placeholder ───────────────────────────────────────────────────
 
 interface ScreenshotProps {
-  id: string        // e.g. "SS-01"
-  label: string     // short title shown inside the box
-  caption: string   // descriptive text below the box
-  src?: string      // path under /public — when provided shows the real image
-  wide?: boolean    // 16:9 (default) vs 4:3
+  id: string
+  label: string
+  caption: string
+  src?: string
+  portrait?: boolean  // narrow centered display for modal/panel screenshots
 }
 
-function Screenshot({ id, label, caption, src, wide = true }: ScreenshotProps) {
+function Screenshot({ id, label, caption, src, portrait = false }: ScreenshotProps) {
+  const wrapClass = portrait ? 'screenshot-figure screenshot-figure--portrait' : 'screenshot-figure'
   return (
-    <figure className="screenshot-figure">
+    <figure className={wrapClass}>
       {src ? (
-        <div className={`screenshot-box screenshot-box--real${wide ? '' : ' screenshot-box--tall'}`}>
-          <img src={src} alt={label} className="screenshot-img" />
+        <div className="screenshot-box screenshot-box--real">
+          <img src={src} alt={label} className="screenshot-img" loading="lazy" />
         </div>
       ) : (
-        <div className={`screenshot-box${wide ? '' : ' screenshot-box--tall'}`}>
+        <div className="screenshot-box">
           <div className="screenshot-inner">
             <svg className="screenshot-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round"
@@ -34,9 +35,19 @@ function Screenshot({ id, label, caption, src, wide = true }: ScreenshotProps) {
         </div>
       )}
       <figcaption className="screenshot-caption">
-        <strong>{id}</strong> — {caption}
+        <strong className="screenshot-caption-id">{id}</strong>{caption}
       </figcaption>
     </figure>
+  )
+}
+
+// Side-by-side portrait screenshots (for modal / panel pairs)
+function ScreenshotPair({ left, right }: { left: ScreenshotProps; right: ScreenshotProps }) {
+  return (
+    <div className="screenshot-pair">
+      <Screenshot {...left}  portrait />
+      <Screenshot {...right} portrait />
+    </div>
   )
 }
 
@@ -105,12 +116,11 @@ function FaqAccordion() {
 
 // ─── Role Tab Manual ──────────────────────────────────────────────────────────
 
-type Role = 'student' | 'employer' | 'admin'
+type Role = 'student' | 'employer'
 
 const ROLE_LABELS: Record<Role, string> = {
   student: 'Student',
   employer: 'Employer',
-  admin: 'Admin',
 }
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -125,7 +135,7 @@ function App() {
         <div className="container">
           <h1 className="project-title">UppGrad</h1>
           <p className="project-description">
-            AI-powered career platform for students, employers, and administrators
+            AI-powered career platform for students and employers
           </p>
         </div>
       </header>
@@ -154,7 +164,7 @@ function App() {
               <div>
                 <h3>Explore the live platform</h3>
                 <p>
-                  Open the deployed UppGrad application to try the student, employer, and admin
+                  Open the deployed UppGrad application to try the student and employer
                   workflows built for the senior project.
                 </p>
               </div>
@@ -222,7 +232,6 @@ function App() {
                   label="Student profile page"
                   caption="The Profile page showing personal details, education, and skills. Use Add CV to attach a default document."
                   src="/screenshots/ss-03.png"
-                  wide={true}
                 />
 
                 <h4 className="manual-sub">1.4 The Dashboard</h4>
@@ -299,22 +308,25 @@ function App() {
 
                     <Screenshot
                       id="SS-05"
-                      label="Document Feedback — upload screen"
-                      caption="Figure 2.1 — Upload screen. Drop your file, choose an opportunity target, then click AI Review (Interactive)."
+                      label="Documental Feedback page"
+                      caption="The Documental Feedback page. An active session banner appears at the top when a review is in progress. The upload form is below it, and completed session history at the bottom."
+                      src="/screenshots/ss-05.png"
                     />
-
-                    <p className="manual-p" style={{ marginTop: '1.25rem' }}>
-                      After submission, a status banner appears at the top of the page. It
-                      transitions through <em>Processing</em>, <em>Awaiting Review</em>, and{' '}
-                      <em>Finalizing</em>. The full pipeline typically completes in 30 to 90
-                      seconds.
-                    </p>
 
                     <Screenshot
                       id="SS-06"
-                      label="Active session — Processing status banner"
-                      caption="Figure 2.2 — Status banner during AI processing. Do not close the tab while the session is running."
+                      label="Request New Feedback — form filled in"
+                      caption="The upload form with a CV attached, a target opportunity selected, and custom instructions entered before clicking AI Review."
+                      src="/screenshots/ss-06.png"
                     />
+
+                    <p className="manual-p" style={{ marginTop: '1.25rem' }}>
+                      After submission, a status banner appears at the top of the page with the
+                      session number and current status. When status changes to{' '}
+                      <em>Awaiting Your Review</em>, a highlighted <em>Review Proposals</em>{' '}
+                      button appears. Click it to open the review panel. The full pipeline
+                      typically completes in 30 to 90 seconds.
+                    </p>
 
                     <h4 className="manual-sub">Reviewing Proposals</h4>
                     <p className="manual-p">
@@ -335,29 +347,18 @@ function App() {
                     <Screenshot
                       id="SS-07"
                       label="Review Proposals panel — full split-pane view"
-                      caption="Figure 2.3 — Review Proposals modal. Left: original PDF with highlighted passage. Right: ranked proposal cards."
-                      wide={true}
+                      caption="Review Proposals modal. Left: original PDF with highlighted passage. Right: ranked proposal cards with accept and reject controls."
+                      src="/screenshots/ss-07.png"
                     />
 
-                    <Screenshot
-                      id="SS-08"
-                      label="Proposal card — Current / Suggested / Accept / Reject"
-                      caption="Figure 2.4 — A single proposal card. The red box shows the current text; the green box shows the suggested replacement. Use the check and X buttons to decide."
-                      wide={false}
-                    />
-
-                    <p className="manual-p" style={{ marginTop: '1.25rem' }}>
+                    <p className="manual-p">
                       Once every proposal has a decision, the <em>Submit Review</em> button in
                       the footer activates. Click it to finalise. The system applies accepted
                       changes, compiles the revised document, and adds a download link to your
-                      session history within approximately 30 seconds.
+                      session history within approximately 30 seconds. Return to the{' '}
+                      <em>Documental Feedback</em> page and look for the completed session card
+                      with a <strong>Download</strong> button to save the revised PDF.
                     </p>
-
-                    <Screenshot
-                      id="SS-09"
-                      label="Session history — completed session with Download button"
-                      caption="Figure 2.5 — Session history card after finalisation. Click Download to save the revised PDF."
-                    />
 
                     <h4 className="manual-sub">Browse Opportunities</h4>
                     <p className="manual-p">
@@ -370,26 +371,58 @@ function App() {
 
                     <Screenshot
                       id="SS-10"
-                      label="Browse Opportunities — filters applied"
-                      caption="Figure 2.6 — Browse Opportunities page with type and deadline filters applied."
+                      label="Browse Opportunities"
+                      caption="The Opportunities page. Each listing shows the employer, type, location, post date, and an AI-calculated match percentage. Click any row to expand full details."
+                      src="/screenshots/ss-10.png"
                     />
 
                     <h4 className="manual-sub">Auto-Apply</h4>
                     <p className="manual-p">
-                      The Auto-Apply feature delegates application drafting and submission to the
-                      AI agent. Navigate to <em>Auto-Apply</em>, select a target opportunity from
-                      the list, choose which document version to attach (your latest revised PDF
-                      is selected by default), and click <em>Start Auto-Apply</em>. The agent
-                      drafts a cover letter, fills the application form, and submits on your
-                      behalf. You will receive a confirmation notification when the submission is
-                      complete.
+                      Auto-Apply delegates application drafting to the AI agent. Navigate to{' '}
+                      <em>Auto-Apply</em>, select a target opportunity from the dropdown, add any
+                      custom instructions to guide the agent (e.g. "highlight my embedded systems
+                      experience"), and click <em>Start session</em>.
                     </p>
 
                     <Screenshot
                       id="SS-11"
-                      label="Auto-Apply page"
-                      caption="Figure 2.7 — Auto-Apply page. Select an opportunity and document version, then start the agent."
+                      label="Auto-Apply — start a new session"
+                      caption="Select an opportunity, optionally add guidance, and click Start session to launch the agent."
+                      src="/screenshots/ss-11.png"
                     />
+
+                    <p className="manual-p">
+                      The agent analyses the job requirements and identifies the documents needed
+                      (CV, Cover Letter, etc.). A modal opens asking how you want to handle each
+                      document — <em>Upload</em> an existing file, <em>Auto-generate</em> using
+                      your profile, <em>Skip</em> to exclude it, or <em>Ignore for now</em> to
+                      handle it yourself. Add per-document guidance in the text box below each
+                      card, then click <em>Generate my materials</em>.
+                    </p>
+
+                    <ScreenshotPair
+                      left={{
+                        id: 'SS-11b',
+                        label: 'Document selection',
+                        caption: 'Choose Upload, Auto-generate, Skip, or Ignore for each required document. Add custom guidance per document.',
+                        src: '/screenshots/ss-11b.png',
+                      }}
+                      right={{
+                        id: 'SS-11c',
+                        label: 'Review tailored package',
+                        caption: 'The agent returns a tailored CV and Cover Letter. Expand each to review, then click Approve & auto-fill.',
+                        src: '/screenshots/ss-11c.png',
+                      }}
+                    />
+
+                    <p className="manual-p">
+                      After generation, the <em>Review your tailored package</em> modal shows the
+                      produced documents. Expand each to read the content and copy it if needed.
+                      If <em>Try to fill the form for me</em> is checked, clicking{' '}
+                      <em>Approve &amp; auto-fill</em> launches a headless browser that fills the
+                      application form on the employer's site. You review the filled form at its
+                      URL before anything is submitted.
+                    </p>
                   </div>
                 )}
 
@@ -397,83 +430,77 @@ function App() {
                 {role === 'employer' && (
                   <div className="role-content">
 
-                    <h4 className="manual-sub">Posting an Opportunity</h4>
+                    <h4 className="manual-sub">Employer Dashboard</h4>
                     <p className="manual-p">
-                      After logging in as an employer, navigate to <em>Post Opportunity</em> via
-                      the sidebar. Fill in the opportunity title, description, requirements,
-                      location, application deadline, and type (Job, Internship, or Part-Time).
-                      Click <em>Publish</em> to make the listing immediately visible to students.
-                      Drafts can be saved and published later.
+                      After signing in as an employer, you land on the Employer Dashboard. The
+                      four stat cards at the top show your Active Job Postings, Applications
+                      Received, Interviews Scheduled, and Candidates Hired. The Quick Actions
+                      panel provides direct shortcuts to post a new opportunity or view your
+                      existing listings.
                     </p>
 
                     <Screenshot
                       id="SS-12"
-                      label="Post Opportunity form — employer view"
-                      caption="Figure 2.8 — Post Opportunity form. All required fields must be completed before publishing."
+                      label="Employer Dashboard"
+                      caption="The Employer Dashboard showing activity stats and quick actions for managing postings."
+                      src="/screenshots/ss-12.png"
+                    />
+
+                    <h4 className="manual-sub">Posting an Opportunity</h4>
+                    <p className="manual-p">
+                      Click <em>Post Opportunity</em> in the top navigation. Fill in all required
+                      fields: job title, location, job type, work mode, experience level, salary
+                      range, application deadline, and a full job description. Add key
+                      responsibilities, requirements, and skill keywords so the platform can
+                      calculate accurate match scores for student profiles. Choose the{' '}
+                      <em>Application Method</em> — <strong>Agentic Apply (AI-Powered)</strong>{' '}
+                      lets students apply directly through UppGrad's auto-apply pipeline. Click{' '}
+                      <em>Post Opportunity</em> to publish immediately.
+                    </p>
+
+                    <ScreenshotPair
+                      left={{
+                        id: 'SS-12b',
+                        label: 'Post Opportunity — basic info and compensation',
+                        caption: 'Top of the Post Opportunity form: job title, type, location, salary range, and deadline.',
+                        src: '/screenshots/ss-12b.png',
+                      }}
+                      right={{
+                        id: 'SS-12c',
+                        label: 'Post Opportunity — details and application method',
+                        caption: 'Lower portion: responsibilities, requirements, skill keywords, benefits, and the application method selector.',
+                        src: '/screenshots/ss-12c.png',
+                      }}
                     />
 
                     <h4 className="manual-sub">Managing Postings and Reviewing Applicants</h4>
                     <p className="manual-p">
-                      Your active and past listings appear under <em>My Postings</em> (accessible
-                      via the Applications link in the sidebar). Each card shows the view count and
-                      application count. Click a listing to expand the applicant list. Click a
-                      student's name to view their full profile, CV, and application message. You
-                      can edit a posting's details or mark it as Closed at any time from this
-                      screen.
-                    </p>
-
-                    <ol className="manual-steps">
-                      <li>Open <em>My Postings</em> from the sidebar.</li>
-                      <li>Click the listing you want to manage.</li>
-                      <li>Use the <em>Edit</em> button to update the description, deadline, or status.</li>
-                      <li>Click an applicant's name to view their profile and documents.</li>
-                    </ol>
-                  </div>
-                )}
-
-                {/* ── ADMIN ── */}
-                {role === 'admin' && (
-                  <div className="role-content">
-
-                    <h4 className="manual-sub">Analytics Dashboard</h4>
-                    <p className="manual-p">
-                      The Admin Analytics page provides platform-wide metrics: new registrations
-                      over time, feedback sessions per day, and application volume by opportunity
-                      type. Use the date-range picker in the top-right corner to filter by period.
-                      Charts update in real time as the range is adjusted.
+                      Navigate to <em>Postings</em> in the top navigation to see all your listings
+                      with aggregate stats: Total Postings, Active Postings, and Total Applicants.
+                      Each listing card shows the job title, status badge, location, salary range,
+                      and post date. Use the <em>View Applicants</em> button to review candidates,{' '}
+                      <em>Analytics</em> to see engagement metrics, or <em>Close Posting</em> to
+                      deactivate the listing.
                     </p>
 
                     <Screenshot
                       id="SS-13"
-                      label="Admin Analytics dashboard"
-                      caption="Figure 2.9 — Admin Analytics. Use the date-range picker to filter metrics by period."
+                      label="Job Postings — manage listings and applicants"
+                      caption="The Postings page listing all active opportunities with applicant counts and management actions."
+                      src="/screenshots/ss-13.png"
                     />
 
-                    <h4 className="manual-sub">Managing Users</h4>
-                    <p className="manual-p">
-                      Go to <em>Admin &rarr; Manage Users</em> to view all registered accounts.
-                      Use the search bar to find a user by name or email. The action menu on each
-                      row allows you to activate, deactivate, or permanently delete an account.
-                      Deactivated accounts cannot log in but their data is retained.
-                    </p>
-
-                    <h4 className="manual-sub">Moderating Postings</h4>
-                    <p className="manual-p">
-                      <em>Admin &rarr; Postings</em> lists every opportunity on the platform
-                      regardless of employer. You can approve pending listings, edit any field, or
-                      remove postings that violate the platform's guidelines. Changes take effect
-                      immediately.
-                    </p>
-
-                    <h4 className="manual-sub">System Settings</h4>
-                    <p className="manual-p">
-                      Under <em>System Settings</em> you can configure global parameters such as
-                      the maximum file upload size, the set of allowed opportunity types, and
-                      maintenance-mode toggles. Changes require admin credentials and take effect
-                      without a server restart.
-                    </p>
+                    <ol className="manual-steps">
+                      <li>Open <em>Postings</em> from the top navigation bar.</li>
+                      <li>Click <em>View Applicants</em> on a listing to see all candidates who applied.</li>
+                      <li>Click a student's name to view their full profile, CV, and application materials.</li>
+                      <li>Use <em>Analytics</em> to track views and application conversion for that posting.</li>
+                      <li>Click <em>Close Posting</em> when the position is filled or the deadline passes.</li>
+                    </ol>
                   </div>
                 )}
+
+                
               </div>
             </div>
 
