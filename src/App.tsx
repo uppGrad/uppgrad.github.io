@@ -7,26 +7,35 @@ interface ScreenshotProps {
   id: string        // e.g. "SS-01"
   label: string     // short title shown inside the box
   caption: string   // descriptive text below the box
+  src?: string      // path under /public — when provided shows the real image
   wide?: boolean    // 16:9 (default) vs 4:3
 }
 
-function Screenshot({ id, label, caption, wide = true }: ScreenshotProps) {
+function Screenshot({ id, label, caption, src, wide = true }: ScreenshotProps) {
   return (
     <figure className="screenshot-figure">
-      <div className={`screenshot-box${wide ? '' : ' screenshot-box--tall'}`}>
-        <div className="screenshot-inner">
-          <svg className="screenshot-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path strokeLinecap="round" strokeLinejoin="round"
-              d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
-            <path strokeLinecap="round" strokeLinejoin="round"
-              d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
-          </svg>
-          <span className="screenshot-id">{id}</span>
-          <span className="screenshot-label">{label}</span>
-          <span className="screenshot-hint">Replace with screenshot</span>
+      {src ? (
+        <div className={`screenshot-box screenshot-box--real${wide ? '' : ' screenshot-box--tall'}`}>
+          <img src={src} alt={label} className="screenshot-img" />
         </div>
-      </div>
-      <figcaption className="screenshot-caption">{caption}</figcaption>
+      ) : (
+        <div className={`screenshot-box${wide ? '' : ' screenshot-box--tall'}`}>
+          <div className="screenshot-inner">
+            <svg className="screenshot-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+            </svg>
+            <span className="screenshot-id">{id}</span>
+            <span className="screenshot-label">{label}</span>
+            <span className="screenshot-hint">Screenshot coming soon</span>
+          </div>
+        </div>
+      )}
+      <figcaption className="screenshot-caption">
+        <strong>{id}</strong> — {caption}
+      </figcaption>
     </figure>
   )
 }
@@ -166,53 +175,70 @@ function App() {
               </div>
 
               <div className="manual-body">
-                <h4 className="manual-sub">1.1 Creating an Account</h4>
+                <h4 className="manual-sub">1.1 Signing In</h4>
                 <p className="manual-p">
-                  Navigate to the UppGrad login page. If you do not have an account, click
-                  <strong> Register</strong>. Choose your role — <strong>Student</strong> or
-                  <strong> Employer</strong> — enter your email address and a password, then
-                  submit the form. A verification step may be required depending on your
-                  institution's configuration.
+                  Navigate to the UppGrad login page. Select your role — <strong>Student</strong> or
+                  <strong> Employer</strong> — then enter your username or university email and
+                  password. Tick <em>Remember me</em> to stay signed in across sessions. If you
+                  have forgotten your password, click <em>Forgot password?</em> to receive a
+                  reset link by email.
                 </p>
 
                 <Screenshot
                   id="SS-01"
                   label="Login page"
-                  caption="Figure 1.1 — The login page. New users should click Register to create an account."
+                  caption="The login page. Select your role, enter your credentials, and click Sign In. New users should click Sign up."
+                  src="/screenshots/ss-01.png"
                 />
+
+                <h4 className="manual-sub">1.2 Creating an Account</h4>
+                <p className="manual-p">
+                  Click <em>Sign up</em> on the login page. Choose your role — Student (looking
+                  for opportunities) or Employer (hiring). Fill in your first name, last name,
+                  and university email, then click <em>Send Verification Code</em>. Enter the
+                  six-digit code delivered to your inbox, set a strong password, accept the Terms
+                  of Service, and click <em>Create Account</em>.
+                </p>
 
                 <Screenshot
                   id="SS-02"
-                  label="Registration form with role selector"
-                  caption="Figure 1.2 — Registration form. Select Student or Employer before submitting."
+                  label="Registration form"
+                  caption="The registration form. A verification code is sent to your university email before the account is created."
+                  src="/screenshots/ss-02.png"
                 />
 
-                <h4 className="manual-sub">1.2 Completing Onboarding</h4>
+                <h4 className="manual-sub">1.3 Your Profile</h4>
                 <p className="manual-p">
-                  After your first login you are directed to the onboarding wizard. For student
-                  accounts this collects your name, profile picture, biography, skills, and
-                  contact links. Complete every field — the AI feedback and recommendation engines
-                  rely on this data. You can return to the Profile page at any time to update your
-                  information.
+                  After signing in, navigate to <em>Profile</em> from the top navigation bar.
+                  Here you can upload a profile picture, edit your bio, add education and work
+                  experience entries, list your skills, and link your GitHub, LinkedIn, and
+                  portfolio. Click <em>Add CV</em> to attach a default CV file that will be
+                  pre-selected in document feedback sessions and auto-apply flows. A complete
+                  profile significantly improves AI recommendation accuracy.
                 </p>
 
                 <Screenshot
                   id="SS-03"
-                  label="Onboarding wizard — profile setup"
-                  caption="Figure 1.3 — Onboarding wizard. Fill in all fields to unlock AI-powered features."
+                  label="Student profile page"
+                  caption="The Profile page showing personal details, education, and skills. Use Add CV to attach a default document."
+                  src="/screenshots/ss-03.png"
+                  wide={true}
                 />
 
-                <h4 className="manual-sub">1.3 The Dashboard</h4>
+                <h4 className="manual-sub">1.4 The Dashboard</h4>
                 <p className="manual-p">
-                  Once onboarding is complete you land on the Dashboard. The left sidebar
-                  provides navigation to all features available for your role. The main area
-                  surfaces recent activity, upcoming deadlines, and quick-access cards.
+                  The Dashboard is the first page you see after logging in. It shows at a glance
+                  how many applications you have submitted, interviews scheduled, opportunities
+                  saved, and AI-recommended matches. The <em>Recent Opportunities</em> panel
+                  surfaces new listings relevant to your profile. Use the top navigation bar to
+                  move between sections.
                 </p>
 
                 <Screenshot
                   id="SS-04"
-                  label="Student dashboard — home page"
-                  caption="Figure 1.4 — Student dashboard. Use the left sidebar to navigate between sections."
+                  label="Student dashboard"
+                  caption="The student dashboard. Quick-stat cards on top, upcoming events on the left, and recommended recent opportunities on the right."
+                  src="/screenshots/ss-04.png"
                 />
               </div>
             </div>
