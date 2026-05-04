@@ -603,6 +603,11 @@ function App() {
                 <p>PDF logbook documenting individual contributions.</p>
                 <a href="/logbooks/bertan_logbook.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Logbook</a>
               </div>
+              <div className="report-card">
+                <h3>Emre Uçar — Logbook</h3>
+                <p>PDF logbook documenting individual contributions.</p>
+                <a href="/logbooks/emre_logbook.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Logbook</a>
+              </div>
             </div>
           </section>
 
