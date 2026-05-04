@@ -581,6 +581,11 @@ function App() {
                 <p>Technical architecture and implementation design details.</p>
                 <a href="/reports/T2528_Detailed_Design_Report.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Report</a>
               </div>
+              <div className="report-card">
+                <h3>Final Report</h3>
+                <p>Complete final project report covering all phases and outcomes.</p>
+                <a href="/reports/T2528_Final_Report.pdf" target="_blank" rel="noopener noreferrer" className="btn">View Report</a>
+              </div>
             </div>
           </section>
 
