@@ -325,7 +325,7 @@ function App() {
                       session number and current status. When status changes to{' '}
                       <em>Awaiting Your Review</em>, a highlighted <em>Review Proposals</em>{' '}
                       button appears. Click it to open the review panel. The full pipeline
-                      typically completes in 30 to 90 seconds.
+                      typically completes in 120 to 180 seconds.
                     </p>
 
                     <h4 className="manual-sub">Reviewing Proposals</h4>
